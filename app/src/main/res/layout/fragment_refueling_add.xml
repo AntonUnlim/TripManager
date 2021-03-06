@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.sosnowskydevelop.tripmanager.viewmodels.RefuelingAddViewModel"/>
@@ -18,6 +20,7 @@
         android:padding="@dimen/mainPadding"
         tools:context="com.sosnowskydevelop.tripmanager.RefuelingListFragment">
 
+<!-- TODO Change EditText color to red on error. -->
         <EditText
             android:id="@+id/odometer_edit_text"
             android:layout_width="match_parent"
@@ -26,6 +29,14 @@
             android:hint="@string/odometer"
             android:text="@={viewModel.odometer}"/>
 
+        <TextView
+            android:id="@+id/odometer_error_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.odometerErrorText}"
+            android:textColor="@color/design_default_color_error"
+            android:visibility="@{viewModel.isOdometerError ? View.VISIBLE : View.GONE}"/>
+
         <EditText
             android:id="@+id/liters_filled_edit_text"
             android:layout_width="match_parent"
@@ -33,6 +44,14 @@
             android:inputType="numberDecimal"
             android:hint="@string/liters_filled"
             android:text="@={viewModel.litersFilled}"/>
+
+        <TextView
+            android:id="@+id/liters_filled_error_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.litersFilledErrorText}"
+            android:textColor="@color/design_default_color_error"
+            android:visibility="@{viewModel.isLitersFilledError ? View.VISIBLE : View.GONE}"/>
 
         <EditText
             android:id="@+id/price_per_liter_edit_text"

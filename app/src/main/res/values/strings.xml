@@ -19,5 +19,6 @@
     <string name="not_to_full_lower">не до полного</string>
 
     <string name="averageFuelConsumption">Средний расход топлива</string>
+    <string name="emptyFieldError">Поле не может быть пустым!</string>
 
 </resources>
