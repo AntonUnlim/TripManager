@@ -32,6 +32,7 @@ class RefuelingAddViewModel internal constructor(
 
     fun initLastRefueling(lastRefueling: Refueling?) {
         this.lastRefueling = lastRefueling
+        odometer.set(lastRefueling?.odometer ?: "0")
     }
 
     fun createRefueling() {

@@ -1,5 +1,7 @@
 package com.sosnowskydevelop.tripmanager
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -40,8 +42,7 @@ class RefuelingInfoFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.deleteButton.setOnClickListener {
-            viewModel.removeRefueling()
-            findNavController().navigate(R.id.action_refuelingInfoFragment_to_refuelingListFragment)
+            showDeleteDialog()
         }
 
         return binding.root
@@ -64,5 +65,25 @@ class RefuelingInfoFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun showDeleteDialog() {
+        lateinit var dialog: AlertDialog
+        val builder = AlertDialog.Builder(this.context)
+        builder.setTitle("Delete")
+        builder.setMessage("Are you sure?")
+        val dialogClickListener = DialogInterface.OnClickListener {_, which ->
+            when(which) {
+                DialogInterface.BUTTON_POSITIVE -> {
+                    viewModel.removeRefueling()
+                    findNavController().navigate(R.id.action_refuelingInfoFragment_to_refuelingListFragment)
+                }
+                DialogInterface.BUTTON_NEGATIVE -> dialog.dismiss()
+            }
+        }
+        builder.setPositiveButton("Yes", dialogClickListener)
+        builder.setNegativeButton("No", dialogClickListener)
+        dialog = builder.create()
+        dialog.show()
     }
 }

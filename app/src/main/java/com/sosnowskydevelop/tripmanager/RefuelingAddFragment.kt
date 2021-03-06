@@ -29,7 +29,7 @@ class RefuelingAddFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         setFragmentResultListener(REQUEST_KEY_LAST_REFUELING) { _, bundle ->
-            lastRefueling = bundle.get(BUNDLE_KEY_LAST_REFUELING) as Refueling
+            lastRefueling = bundle.get(BUNDLE_KEY_LAST_REFUELING) as Refueling?
 
             viewModel.initLastRefueling(lastRefueling)
         }
