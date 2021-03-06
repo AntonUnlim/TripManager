@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TripManager</string>
+
+<!--Buttons-->
+    <string name="add_refueling">Добавить заправку</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+
+<!--Info-->
+    <string name="odometer">Одометр</string>
+    <string name="price_per_liter">Цена за литр</string>
+    <string name="liters_filled">Литров залито</string>
+    <string name="refueling">Заправка</string>
+    <string name="is_to_full_capitalize">До полного/Не до полного</string>
+    <string name="is_to_full_lower">до полного/не до полного</string>
+    <string name="to_full_capitalize">До полного</string>
+    <string name="to_full_lower">до полного</string>
+    <string name="not_to_full_capitalize">Не до полного</string>
+    <string name="not_to_full_lower">не до полного</string>
+
+    <string name="averageFuelConsumption">Средний расход топлива</string>
+
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sosnowskydevelop.tripmanager.viewmodels.RefuelingListItemViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/mainPadding">
+
+        <TextView
+            android:id="@+id/infoOdometer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.odometer}"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/infoIsToFull"
+            tools:text="0"/>
+
+        <TextView
+            android:id="@+id/infoIsToFull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.isToFull}"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/infoOdometer"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@string/is_to_full_capitalize"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

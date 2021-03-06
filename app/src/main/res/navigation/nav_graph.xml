@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/refuelingListFragment">
+
+    <fragment
+        android:id="@+id/carListFragment"
+        android:name="com.sosnowskydevelop.tripmanager.CarListFragment"
+        android:label="CarListFragment"
+        tools:layout="@layout/fragment_car_list">
+
+        <action
+            android:id="@+id/action_carListFragment_to_carAddEditFragment"
+            app:destination="@id/carAddEditFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/carAddEditFragment"
+        android:name="com.sosnowskydevelop.tripmanager.CarAddEditFragment"
+        android:label="CarAddEditFragment"
+        tools:layout="@layout/fragment_car_add_edit">
+
+        <action
+            android:id="@+id/action_carAddEditFragment_to_carListFragment"
+            app:destination="@id/carListFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/refuelingListFragment"
+        android:name="com.sosnowskydevelop.tripmanager.RefuelingListFragment"
+        android:label="RefuelingListFragment"
+        tools:layout="@layout/fragment_refueling_list">
+
+        <action
+            android:id="@+id/action_refuelingListFragment_to_refuelingAddFragment"
+            app:destination="@id/refuelingAddFragment"/>
+
+        <action
+            android:id="@+id/action_refuelingListFragment_to_refuelingInfoFragment"
+            app:destination="@id/refuelingInfoFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/refuelingAddFragment"
+        android:name="com.sosnowskydevelop.tripmanager.RefuelingAddFragment"
+        android:label="RefuelingAddFragment"
+        tools:layout="@layout/fragment_refueling_add">
+
+        <action
+            android:id="@+id/action_refuelingAddFragment_to_refuelingListFragment"
+            app:destination="@id/refuelingListFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/refuelingInfoFragment"
+        android:name="com.sosnowskydevelop.tripmanager.RefuelingInfoFragment"
+        android:label="RefuelingInfoFragment"
+        tools:layout="@layout/fragment_refueling_info">
+
+        <action
+            android:id="@+id/action_refuelingInfoFragment_to_refuelingListFragment"
+            app:destination="@id/refuelingListFragment"/>
+
+    </fragment>
+
+</navigation>

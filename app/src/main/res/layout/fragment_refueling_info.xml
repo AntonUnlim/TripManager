@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sosnowskydevelop.tripmanager.viewmodels.RefuelingInfoViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/mainPadding">
+
+        <TextView
+            android:id="@+id/textOdometer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/odometer"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textLitersFilled"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/infoOdometer"/>
+
+        <TextView
+            android:id="@+id/infoOdometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.odometer}"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textLitersFilled"
+            app:layout_constraintStart_toEndOf="@id/textOdometer"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="0"/>
+
+        <TextView
+            android:id="@+id/textLitersFilled"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/liters_filled"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toBottomOf="@id/textOdometer"
+            app:layout_constraintBottom_toTopOf="@id/textPricePerLiter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/infoLitersFilled"/>
+
+        <TextView
+            android:id="@+id/infoLitersFilled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.litersFilled}"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toBottomOf="@id/textOdometer"
+            app:layout_constraintBottom_toTopOf="@id/textPricePerLiter"
+            app:layout_constraintStart_toEndOf="@id/textLitersFilled"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="0.0"/>
+
+        <TextView
+            android:id="@+id/textPricePerLiter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/price_per_liter"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toBottomOf="@id/textLitersFilled"
+            app:layout_constraintBottom_toTopOf="@id/infoIsToFull"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/infoPricePerLiter"/>
+
+        <TextView
+            android:id="@+id/infoPricePerLiter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.pricePerLiter}"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toBottomOf="@id/textLitersFilled"
+            app:layout_constraintBottom_toTopOf="@id/infoIsToFull"
+            app:layout_constraintStart_toEndOf="@id/textPricePerLiter"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="0.0"/>
+
+        <TextView
+            android:id="@+id/textIsToFull"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/refueling"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toBottomOf="@id/textPricePerLiter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/infoIsToFull"/>
+
+        <TextView
+            android:id="@+id/infoIsToFull"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.isToFull}"
+            android:textSize="@dimen/infoTextSize"
+            app:layout_constraintTop_toBottomOf="@id/textPricePerLiter"
+            app:layout_constraintStart_toEndOf="@id/textIsToFull"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@string/is_to_full_lower"/>
+
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

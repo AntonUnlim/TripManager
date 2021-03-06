@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.sosnowskydevelop.tripmanager.viewmodels.RefuelingAddViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/mainPadding"
+        tools:context="com.sosnowskydevelop.tripmanager.RefuelingListFragment">
+
+        <EditText
+            android:id="@+id/odometer_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="@string/odometer"
+            android:text="@={viewModel.odometer}"/>
+
+        <EditText
+            android:id="@+id/liters_filled_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="@string/liters_filled"
+            android:text="@={viewModel.litersFilled}"/>
+
+        <EditText
+            android:id="@+id/price_per_liter_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="@string/price_per_liter"
+            android:text="@={viewModel.pricePerLiter}"/>
+
+        <CheckBox
+            android:id="@+id/to_full_check_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/to_full_capitalize"
+            android:checked="@={viewModel.isToFull}"/>
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </LinearLayout>
+
+</layout>
