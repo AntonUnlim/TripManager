@@ -63,6 +63,8 @@ class RefuelingInfoFragment : Fragment() {
                 } else {
                     viewModel.isToFull.set(NOT_TO_FULL_LOWER)
                 }
+
+                viewModel.parentTripID.set(it.tripId)
             }
         })
     }

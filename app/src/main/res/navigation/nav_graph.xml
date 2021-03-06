@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/refuelingListFragment">
+    app:startDestination="@id/tripListFragment">
 
     <fragment
         android:id="@+id/carListFragment"
@@ -71,6 +71,27 @@
             app:popUpTo="@+id/refuelingListFragment"
             app:popUpToInclusive="true"/>
 
+    </fragment>
+    <fragment
+        android:id="@+id/tripListFragment"
+        android:name="com.sosnowskydevelop.tripmanager.fragments.TripListFragment"
+        android:label="TripListFragment" >
+        <action
+            android:id="@+id/action_tripListFragment_to_tripAddFragment"
+            app:destination="@id/tripAddFragment" />
+        <action
+            android:id="@+id/action_tripListFragment_to_refuelingListFragment"
+            app:destination="@id/refuelingListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripAddFragment"
+        android:name="com.sosnowskydevelop.tripmanager.fragments.TripAddFragment"
+        android:label="TripAddFragment" >
+        <action
+            android:id="@+id/action_tripAddFragment_to_tripListFragment"
+            app:destination="@id/tripListFragment"
+            app:popUpTo="@+id/tripListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

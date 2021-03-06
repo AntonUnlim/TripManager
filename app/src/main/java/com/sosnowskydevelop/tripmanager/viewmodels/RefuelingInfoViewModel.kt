@@ -13,13 +13,14 @@ class RefuelingInfoViewModel internal constructor(
     private val refuelingRepository: RefuelingRepository
 ) : ViewModel() {
     lateinit var refueling: LiveData<Refueling>
-
+    var refuelingToDelete: Refueling? = null
     var refuelingId: Long = 0
 
     val odometer: ObservableField<String> = ObservableField()
     val litersFilled: ObservableField<String> = ObservableField()
     val pricePerLiter: ObservableField<String> = ObservableField()
     val isToFull: ObservableField<String> = ObservableField()
+    val parentTripID: ObservableField<Long> = ObservableField()
 
     fun initRefueling(refuelingId: Long) {
         this.refuelingId = refuelingId
@@ -33,7 +34,8 @@ class RefuelingInfoViewModel internal constructor(
                     odometer.get().toString(),
                     litersFilled.get().toString(),
                     pricePerLiter.get().toString(),
-                    getBooleanIsToFull()
+                    getBooleanIsToFull(),
+                    parentTripID.get()?:0
             )
 
             refueling.refuelingId = refuelingId

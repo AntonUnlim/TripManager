@@ -10,9 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sosnowskydevelop.tripmanager.data.Refueling
 import com.sosnowskydevelop.tripmanager.databinding.FragmentRefuelingAddBinding
-import com.sosnowskydevelop.tripmanager.utilities.BUNDLE_KEY_LAST_REFUELING
-import com.sosnowskydevelop.tripmanager.utilities.InjectorUtils
-import com.sosnowskydevelop.tripmanager.utilities.REQUEST_KEY_LAST_REFUELING
+import com.sosnowskydevelop.tripmanager.utilities.*
 import com.sosnowskydevelop.tripmanager.viewmodels.RefuelingAddViewModel
 
 class RefuelingAddFragment : Fragment() {
@@ -24,6 +22,7 @@ class RefuelingAddFragment : Fragment() {
     }
 
     private var lastRefueling: Refueling? = null
+    private var parentTripID: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +31,11 @@ class RefuelingAddFragment : Fragment() {
             lastRefueling = bundle.get(BUNDLE_KEY_LAST_REFUELING) as Refueling?
 
             viewModel.initLastRefueling(lastRefueling)
+        }
+
+        setFragmentResultListener(REQUEST_KEY_TRIP) { _, bundle ->
+            parentTripID = bundle.getLong(BUNDLE_KEY_TRIP)
+            viewModel.initParentTrip(parentTripID)
         }
     }
 

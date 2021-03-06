@@ -3,7 +3,7 @@ package com.sosnowskydevelop.tripmanager.data
 class RefuelingRepository private constructor(
     private val refuelingDao: RefuelingDao
 ) {
-    fun getRefuelingList() = refuelingDao.getRefuelingList()
+    fun getRefuelingList(tripId: Long) = refuelingDao.getRefuelingList(tripId)
 
     fun getRefueling(refuelingId: Long) = refuelingDao.getRefueling(refuelingId)
 
@@ -11,7 +11,7 @@ class RefuelingRepository private constructor(
         refuelingDao.insertRefueling(refueling)
     }
 
-    suspend fun removeRefueling(refueling: Refueling) {
+    suspend fun removeRefueling(refueling: Refueling?) {
         refuelingDao.deleteRefueling(refueling)
     }
 

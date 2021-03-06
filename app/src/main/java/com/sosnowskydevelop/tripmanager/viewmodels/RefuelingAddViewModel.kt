@@ -29,10 +29,15 @@ class RefuelingAddViewModel internal constructor(
     val isToFull: ObservableBoolean = ObservableBoolean()
 
     private var lastRefueling: Refueling? = null
+    private var parentTripID: Long = 0
 
     fun initLastRefueling(lastRefueling: Refueling?) {
         this.lastRefueling = lastRefueling
         odometer.set(lastRefueling?.odometer ?: "0")
+    }
+
+    fun initParentTrip(parentTripID: Long) {
+        this.parentTripID = parentTripID
     }
 
     fun createRefueling() {
@@ -61,7 +66,8 @@ class RefuelingAddViewModel internal constructor(
                             newRefuelingOdometer,
                             newRefuelingLitersFilled,
                             newRefuelingPricePerLiter,
-                            newRefuelingIsToFull
+                            newRefuelingIsToFull,
+                            parentTripID
                     ))
                 }
                 isRefuelingCreated = true

@@ -5,11 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.sosnowskydevelop.tripmanager.data.Refueling
 import com.sosnowskydevelop.tripmanager.data.RefuelingRepository
+import com.sosnowskydevelop.tripmanager.data.trip.Trip
 
 class RefuelingListViewModel internal constructor(
-    refuelingRepository: RefuelingRepository
+    private val refuelingRepository: RefuelingRepository
 ) : ViewModel() {
-    val refuelingList: LiveData<List<Refueling>> = refuelingRepository.getRefuelingList()
+    // TODO remove tripId = 0
+    var refuelingList: LiveData<List<Refueling>> = refuelingRepository.getRefuelingList(0)
+    var tripId: Long = 0
 
     val averageFuelConsumption: ObservableField<String> = ObservableField()
 
@@ -49,5 +52,10 @@ class RefuelingListViewModel internal constructor(
                 }
             }
         }
+    }
+
+    fun initTrip(tripId: Long) {
+        this.tripId = tripId
+        refuelingList = refuelingRepository.getRefuelingList(tripId)
     }
 }

@@ -20,5 +20,6 @@
 
     <string name="averageFuelConsumption">Средний расход топлива</string>
     <string name="emptyFieldError">Поле не может быть пустым!</string>
+    <string name="add_trip">Add new trip</string>
 
 </resources>

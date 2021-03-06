@@ -15,7 +15,9 @@ const val DATABASE_NAME = "refueling-db"
 // Request Keys
 const val REQUEST_KEY_REFUELING = "requestKeyRefueling"
 const val REQUEST_KEY_LAST_REFUELING = "requestKeyLastRefueling"
+const val REQUEST_KEY_TRIP = "requestKeyTrip"
 
 // Bundle Keys
 const val BUNDLE_KEY_REFUELING = "bundleKeyRefueling"
 const val BUNDLE_KEY_LAST_REFUELING = "bundleKeyLastRefueling"
+const val BUNDLE_KEY_TRIP = "bundleKeyTrip"
