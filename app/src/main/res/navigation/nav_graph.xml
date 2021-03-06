@@ -53,7 +53,9 @@
 
         <action
             android:id="@+id/action_refuelingAddFragment_to_refuelingListFragment"
-            app:destination="@id/refuelingListFragment"/>
+            app:destination="@id/refuelingListFragment"
+            app:popUpTo="@+id/refuelingListFragment"
+            app:popUpToInclusive="true"/>
 
     </fragment>
 
@@ -65,7 +67,9 @@
 
         <action
             android:id="@+id/action_refuelingInfoFragment_to_refuelingListFragment"
-            app:destination="@id/refuelingListFragment"/>
+            app:destination="@id/refuelingListFragment"
+            app:popUpTo="@+id/refuelingListFragment"
+            app:popUpToInclusive="true"/>
 
     </fragment>
 
