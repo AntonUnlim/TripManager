@@ -1,5 +1,6 @@
 package com.sosnowskydevelop.tripmanager.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -12,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sosnowskydevelop.tripmanager.R
 import com.sosnowskydevelop.tripmanager.data.trip.Trip
 import com.sosnowskydevelop.tripmanager.databinding.ListItemTripBinding
-import com.sosnowskydevelop.tripmanager.utilities.BUNDLE_KEY_TRIP
-import com.sosnowskydevelop.tripmanager.utilities.REQUEST_KEY_TRIP
+import com.sosnowskydevelop.tripmanager.utilities.BUNDLE_KEY_TRIP_ID_FOR_REFUELING_LIST
+import com.sosnowskydevelop.tripmanager.utilities.LOG_TAG
+import com.sosnowskydevelop.tripmanager.utilities.REQUEST_KEY_TRIP_ID_FOR_REFUELING_LIST
 import com.sosnowskydevelop.tripmanager.viewmodels.TripListItemViewModel
 
 class TripAdapter (
@@ -51,11 +53,8 @@ class TripAdapter (
 
             binding.container.setOnClickListener {
 
-                val result = item.tripId
-
-                fragment.setFragmentResult(
-                    REQUEST_KEY_TRIP, bundleOf(BUNDLE_KEY_TRIP to result)
-                )
+                fragment.setFragmentResult(REQUEST_KEY_TRIP_ID_FOR_REFUELING_LIST,
+                        bundleOf(BUNDLE_KEY_TRIP_ID_FOR_REFUELING_LIST to item.tripId))
 
                 fragment.findNavController()
                     .navigate(R.id.action_tripListFragment_to_refuelingListFragment)

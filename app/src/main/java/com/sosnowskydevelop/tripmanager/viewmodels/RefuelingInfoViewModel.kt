@@ -27,6 +27,7 @@ class RefuelingInfoViewModel internal constructor(
         refueling = refuelingRepository.getRefueling(refuelingId)
     }
 
+    // TODO не создавать новый объект типа Refueling для удаления
     fun removeRefueling() {
         viewModelScope.launch {
 

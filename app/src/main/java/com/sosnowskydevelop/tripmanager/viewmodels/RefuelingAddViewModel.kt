@@ -1,5 +1,6 @@
 package com.sosnowskydevelop.tripmanager.viewmodels
 
+import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
@@ -7,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.sosnowskydevelop.tripmanager.data.Refueling
 import com.sosnowskydevelop.tripmanager.data.RefuelingRepository
 import com.sosnowskydevelop.tripmanager.utilities.EMPTY_FIELD_ERROR
+import com.sosnowskydevelop.tripmanager.utilities.LOG_TAG
 import com.sosnowskydevelop.tripmanager.utilities.ODOMETER_LESS_THAN_LAST_ERROR
 import kotlinx.coroutines.launch
 
@@ -34,6 +36,7 @@ class RefuelingAddViewModel internal constructor(
     fun initLastRefueling(lastRefueling: Refueling?) {
         this.lastRefueling = lastRefueling
         odometer.set(lastRefueling?.odometer ?: "0")
+
     }
 
     fun initParentTrip(parentTripID: Long) {

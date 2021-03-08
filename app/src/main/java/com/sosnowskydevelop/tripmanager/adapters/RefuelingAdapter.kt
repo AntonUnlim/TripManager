@@ -49,10 +49,8 @@ class RefuelingAdapter(
 
             binding.container.setOnClickListener {
 
-                val result = item.refuelingId
-
-                fragment.setFragmentResult(
-                        REQUEST_KEY_REFUELING, bundleOf(BUNDLE_KEY_REFUELING to result))
+                fragment.setFragmentResult(REQUEST_KEY_REFUELING,
+                        bundleOf(BUNDLE_KEY_REFUELING to item.refuelingId))
 
                 fragment.findNavController()
                         .navigate(R.id.action_refuelingListFragment_to_refuelingInfoFragment)

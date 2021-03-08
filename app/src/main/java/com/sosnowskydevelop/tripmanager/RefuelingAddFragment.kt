@@ -1,6 +1,7 @@
 package com.sosnowskydevelop.tripmanager
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,12 +30,11 @@ class RefuelingAddFragment : Fragment() {
 
         setFragmentResultListener(REQUEST_KEY_LAST_REFUELING) { _, bundle ->
             lastRefueling = bundle.get(BUNDLE_KEY_LAST_REFUELING) as Refueling?
-
             viewModel.initLastRefueling(lastRefueling)
         }
 
-        setFragmentResultListener(REQUEST_KEY_TRIP) { _, bundle ->
-            parentTripID = bundle.getLong(BUNDLE_KEY_TRIP)
+        setFragmentResultListener(REQUEST_KEY_TRIP_ID_FOR_REFUELING_ADD) { _, bundle ->
+            parentTripID = bundle.getLong(BUNDLE_KEY_TRIP_ID_FOR_REFUELING_ADD)
             viewModel.initParentTrip(parentTripID)
         }
     }

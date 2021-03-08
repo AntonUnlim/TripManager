@@ -13,7 +13,9 @@ import com.sosnowskydevelop.tripmanager.utilities.InjectorUtils
 import com.sosnowskydevelop.tripmanager.viewmodels.TripListViewModel
 
 class TripListFragment : Fragment() {
+
     private lateinit var binding: FragmentTripListBinding
+
     private val viewModel: TripListViewModel by viewModels {
         InjectorUtils.provideTripListViewModelFactory(requireContext())
     }

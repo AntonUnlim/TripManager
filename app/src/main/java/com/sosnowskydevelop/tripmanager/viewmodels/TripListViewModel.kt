@@ -9,5 +9,4 @@ class TripListViewModel internal constructor(
     tripRepository: TripRepository
 ) : ViewModel() {
     val tripList: LiveData<List<Trip>> = tripRepository.getTripList()
-
 }

@@ -1,6 +1,7 @@
 package com.sosnowskydevelop.tripmanager
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,18 +25,17 @@ class RefuelingListFragment : Fragment() {
         InjectorUtils.provideRefuelingListViewModelFactory(requireContext())
     }
 
-    private var lastRefueling: Refueling? = null
     private var parentTripID: Long = 0
+    private val refuelingAdapter: RefuelingAdapter = RefuelingAdapter(this)
+    private var lastRefueling: Refueling? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setFragmentResultListener(REQUEST_KEY_TRIP) { _, bundle ->
-
-            parentTripID = bundle.getLong(BUNDLE_KEY_TRIP)
-
+        setFragmentResultListener(REQUEST_KEY_TRIP_ID_FOR_REFUELING_LIST) { _, bundle ->
+            parentTripID = bundle.getLong(BUNDLE_KEY_TRIP_ID_FOR_REFUELING_LIST)
             viewModel.initTrip(parentTripID)
-
+            addObserverForRefuelingList(refuelingAdapter)
         }
     }
 
@@ -45,17 +45,21 @@ class RefuelingListFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        val adapter = RefuelingAdapter(this)
-        binding.refuelingList.adapter = adapter
-        subscribeUI(adapter)
+        binding.refuelingList.adapter = refuelingAdapter
+
+        // TODO Temp
+        addObserverForRefuelingList(refuelingAdapter)
 
         binding.addRefuelingButton.setOnClickListener {
+
             setFragmentResult(REQUEST_KEY_LAST_REFUELING,
                     bundleOf(BUNDLE_KEY_LAST_REFUELING to lastRefueling))
-            setFragmentResult(
-                REQUEST_KEY_TRIP,
-                bundleOf(BUNDLE_KEY_TRIP to parentTripID))
-            findNavController().navigate(R.id.action_refuelingListFragment_to_refuelingAddFragment)
+
+            setFragmentResult(REQUEST_KEY_TRIP_ID_FOR_REFUELING_ADD,
+                    bundleOf(BUNDLE_KEY_TRIP_ID_FOR_REFUELING_ADD to parentTripID))
+
+            findNavController()
+                    .navigate(R.id.action_refuelingListFragment_to_refuelingAddFragment)
         }
 
         setHasOptionsMenu(true)
@@ -63,10 +67,10 @@ class RefuelingListFragment : Fragment() {
         return binding.root
     }
 
-    private fun subscribeUI(adapter: RefuelingAdapter) {
+    private fun addObserverForRefuelingList(refuelingAdapter: RefuelingAdapter) {
         viewModel.refuelingList.observe(viewLifecycleOwner, {
             it?.let {
-                adapter.updateRefuelingList(it)
+                refuelingAdapter.updateRefuelingList(it)
 
                 lastRefueling = it.lastOrNull()
 
