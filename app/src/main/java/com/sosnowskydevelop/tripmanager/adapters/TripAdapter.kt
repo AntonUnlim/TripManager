@@ -1,6 +1,5 @@
 package com.sosnowskydevelop.tripmanager.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -11,19 +10,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sosnowskydevelop.tripmanager.R
-import com.sosnowskydevelop.tripmanager.data.Refueling
 import com.sosnowskydevelop.tripmanager.data.trip.Trip
-import com.sosnowskydevelop.tripmanager.databinding.ListItemRefuelingBinding
 import com.sosnowskydevelop.tripmanager.databinding.ListItemTripBinding
-import com.sosnowskydevelop.tripmanager.utilities.BUNDLE_KEY_REFUELING
 import com.sosnowskydevelop.tripmanager.utilities.BUNDLE_KEY_TRIP
-import com.sosnowskydevelop.tripmanager.utilities.REQUEST_KEY_REFUELING
 import com.sosnowskydevelop.tripmanager.utilities.REQUEST_KEY_TRIP
-import com.sosnowskydevelop.tripmanager.viewmodels.RefuelingListItemViewModel
 import com.sosnowskydevelop.tripmanager.viewmodels.TripListItemViewModel
 
 class TripAdapter (
-    private val context: Context,
     private val fragment: Fragment
 ) : ListAdapter<Trip, RecyclerView.ViewHolder>(TripDiffCallback()) {
 

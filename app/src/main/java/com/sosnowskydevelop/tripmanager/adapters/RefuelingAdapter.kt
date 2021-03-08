@@ -1,6 +1,5 @@
 package com.sosnowskydevelop.tripmanager.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
@@ -18,7 +17,6 @@ import com.sosnowskydevelop.tripmanager.utilities.REQUEST_KEY_REFUELING
 import com.sosnowskydevelop.tripmanager.viewmodels.RefuelingListItemViewModel
 
 class RefuelingAdapter(
-    private val context: Context,
     private val fragment: Fragment
 ) : ListAdapter<Refueling, RecyclerView.ViewHolder>(RefuelingDiffCallback()) {
 

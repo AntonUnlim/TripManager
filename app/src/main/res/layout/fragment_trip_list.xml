@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/mainPadding"
-        tools:context="com.sosnowskydevelop.tripmanager.fragments.TripListFragment">
+        tools:context="com.sosnowskydevelop.tripmanager.TripListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tripList"

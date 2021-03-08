@@ -5,6 +5,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.annotation.RequiresApi
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.sosnowskydevelop.tripmanager.utilities.NOT_TO_FULL_CAPITALIZE
 import com.sosnowskydevelop.tripmanager.utilities.NOT_TO_FULL_LOWER
@@ -22,6 +23,7 @@ data class Refueling (
     @PrimaryKey(autoGenerate = true)
     var refuelingId: Long = 0
 
+    @get: Ignore
     val isToFullCapitalize: String
         get() {
             return if (isToFull) {
@@ -31,6 +33,7 @@ data class Refueling (
             }
         }
 
+    @get: Ignore
     val isToFullLower: String
         get() {
             return if (isToFull) {
@@ -71,6 +74,4 @@ data class Refueling (
             return arrayOfNulls(size)
         }
     }
-
-
 }

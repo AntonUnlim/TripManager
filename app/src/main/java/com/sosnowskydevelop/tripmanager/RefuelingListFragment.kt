@@ -21,7 +21,7 @@ class RefuelingListFragment : Fragment() {
     private lateinit var binding: FragmentRefuelingListBinding
 
     private val viewModel: RefuelingListViewModel by viewModels {
-        InjectorUtils.provideRefuelingListViewModelFactory(this)
+        InjectorUtils.provideRefuelingListViewModelFactory(requireContext())
     }
 
     private var lastRefueling: Refueling? = null
@@ -45,7 +45,7 @@ class RefuelingListFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        val adapter = RefuelingAdapter(requireContext(), this)
+        val adapter = RefuelingAdapter(this)
         binding.refuelingList.adapter = adapter
         subscribeUI(adapter)
 

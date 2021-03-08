@@ -14,6 +14,4 @@ data class Trip (val name: String, val beginDate: Date) {
     @Ignore
     val listOfRefuelings: List<Refueling> = ArrayList()
     var endDate: Date? = null
-
-
 }

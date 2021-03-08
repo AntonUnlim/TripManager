@@ -1,4 +1,4 @@
-package com.sosnowskydevelop.tripmanager.fragments
+package com.sosnowskydevelop.tripmanager
 
 import android.os.Bundle
 import android.view.LayoutInflater
