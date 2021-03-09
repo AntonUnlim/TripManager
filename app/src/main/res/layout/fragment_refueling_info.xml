@@ -25,10 +25,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/textLitersFilled"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/infoOdometer"/>
+            app:layout_constraintEnd_toStartOf="@id/infoTripName"/>
 
         <TextView
-            android:id="@+id/infoOdometer"
+            android:id="@+id/infoTripName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{viewModel.odometer}"
@@ -106,6 +106,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="@string/is_to_full_lower"/>
 
+<!--    TODO Make a gray edit button above the delete button.-->
+
+<!--    TODO Make a red delete button at the bottom of the screen.-->
         <Button
             android:id="@+id/delete_button"
             android:layout_width="match_parent"

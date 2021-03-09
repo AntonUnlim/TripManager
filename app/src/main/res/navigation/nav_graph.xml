@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/carListFragment"
-        android:name="com.sosnowskydevelop.tripmanager.CarListFragment"
+        android:name="com.sosnowskydevelop.tripmanager.fragments.CarListFragment"
         android:label="CarListFragment"
         tools:layout="@layout/fragment_car_list">
 
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/carAddEditFragment"
-        android:name="com.sosnowskydevelop.tripmanager.CarAddEditFragment"
+        android:name="com.sosnowskydevelop.tripmanager.fragments.CarAddEditFragment"
         android:label="CarAddEditFragment"
         tools:layout="@layout/fragment_car_add_edit">
 
@@ -30,52 +30,8 @@
     </fragment>
 
     <fragment
-        android:id="@+id/refuelingListFragment"
-        android:name="com.sosnowskydevelop.tripmanager.RefuelingListFragment"
-        android:label="RefuelingListFragment"
-        tools:layout="@layout/fragment_refueling_list">
-
-        <action
-            android:id="@+id/action_refuelingListFragment_to_refuelingAddFragment"
-            app:destination="@id/refuelingAddFragment"/>
-
-        <action
-            android:id="@+id/action_refuelingListFragment_to_refuelingInfoFragment"
-            app:destination="@id/refuelingInfoFragment"/>
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/refuelingAddFragment"
-        android:name="com.sosnowskydevelop.tripmanager.RefuelingAddFragment"
-        android:label="RefuelingAddFragment"
-        tools:layout="@layout/fragment_refueling_add">
-
-        <action
-            android:id="@+id/action_refuelingAddFragment_to_refuelingListFragment"
-            app:destination="@id/refuelingListFragment"
-            app:popUpTo="@+id/refuelingListFragment"
-            app:popUpToInclusive="true"/>
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/refuelingInfoFragment"
-        android:name="com.sosnowskydevelop.tripmanager.RefuelingInfoFragment"
-        android:label="RefuelingInfoFragment"
-        tools:layout="@layout/fragment_refueling_info">
-
-        <action
-            android:id="@+id/action_refuelingInfoFragment_to_refuelingListFragment"
-            app:destination="@id/refuelingListFragment"
-            app:popUpTo="@+id/refuelingListFragment"
-            app:popUpToInclusive="true"/>
-
-    </fragment>
-
-    <fragment
         android:id="@+id/tripListFragment"
-        android:name="com.sosnowskydevelop.tripmanager.TripListFragment"
+        android:name="com.sosnowskydevelop.tripmanager.fragments.TripListFragment"
         android:label="TripListFragment"
         tools:layout="@layout/fragment_trip_list">
 
@@ -91,7 +47,7 @@
 
     <fragment
         android:id="@+id/tripAddFragment"
-        android:name="com.sosnowskydevelop.tripmanager.TripAddFragment"
+        android:name="com.sosnowskydevelop.tripmanager.fragments.TripAddFragment"
         android:label="TripAddFragment"
         tools:layout="@layout/fragment_trip_add">
 
@@ -99,6 +55,50 @@
             android:id="@+id/action_tripAddFragment_to_tripListFragment"
             app:destination="@id/tripListFragment"
             app:popUpTo="@+id/tripListFragment"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/refuelingListFragment"
+        android:name="com.sosnowskydevelop.tripmanager.fragments.RefuelingListFragment"
+        android:label="RefuelingListFragment"
+        tools:layout="@layout/fragment_refueling_list">
+
+        <action
+            android:id="@+id/action_refuelingListFragment_to_refuelingAddFragment"
+            app:destination="@id/refuelingAddFragment"/>
+
+        <action
+            android:id="@+id/action_refuelingListFragment_to_refuelingInfoFragment"
+            app:destination="@id/refuelingInfoFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/refuelingAddFragment"
+        android:name="com.sosnowskydevelop.tripmanager.fragments.RefuelingAddFragment"
+        android:label="RefuelingAddFragment"
+        tools:layout="@layout/fragment_refueling_add">
+
+        <action
+            android:id="@+id/action_refuelingAddFragment_to_refuelingListFragment"
+            app:destination="@id/refuelingListFragment"
+            app:popUpTo="@+id/refuelingListFragment"
+            app:popUpToInclusive="true"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/refuelingInfoFragment"
+        android:name="com.sosnowskydevelop.tripmanager.fragments.RefuelingInfoFragment"
+        android:label="RefuelingInfoFragment"
+        tools:layout="@layout/fragment_refueling_info">
+
+        <action
+            android:id="@+id/action_refuelingInfoFragment_to_refuelingListFragment"
+            app:destination="@id/refuelingListFragment"
+            app:popUpTo="@+id/refuelingListFragment"
             app:popUpToInclusive="true"/>
 
     </fragment>

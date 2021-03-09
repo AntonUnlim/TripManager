@@ -5,16 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.sosnowskydevelop.tripmanager.data.trip.Trip
-import com.sosnowskydevelop.tripmanager.data.trip.TripDao
-import com.sosnowskydevelop.tripmanager.utilities.Converters
 import com.sosnowskydevelop.tripmanager.utilities.DATABASE_NAME
 
 @Database(entities = [Trip::class, Refueling::class], version = 7)
 @TypeConverters(Converters::class)
 abstract class AppDatabase: RoomDatabase() {
-    abstract fun refuelingDao(): RefuelingDao
+
     abstract fun tripDao(): TripDao
+    abstract fun refuelingDao(): RefuelingDao
 
     companion object {
 

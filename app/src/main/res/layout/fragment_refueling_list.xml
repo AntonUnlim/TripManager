@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--TODO Back button in the upper left corner of the screen with a caption saying that the button returns to the trip.-->
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -14,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/mainPadding"
-        tools:context="com.sosnowskydevelop.tripmanager.RefuelingListFragment">
+        tools:context="com.sosnowskydevelop.tripmanager.fragments.RefuelingListFragment">
 
         <TextView
             android:id="@+id/textAverageFuelConsumption"
@@ -45,20 +47,19 @@
             android:layout_height="0dp"
             android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/textAverageFuelConsumption"
             app:layout_constraintBottom_toTopOf="@id/addRefuelingButton"
+            app:layout_constraintTop_toBottomOf="@id/textAverageFuelConsumption"
             tools:context="com.sosnowskydevelop.tripmanager.TripManagerActivity"
-            tools:listitem="@layout/list_item_refueling"/>
+            tools:listitem="@layout/list_item_refueling" />
 
-<!-- TODO a button in the form of a circle with a plus sign in the lower right corner -->
+<!--    TODO a button in the form of a circle with a plus sign in the lower right corner.-->
         <Button
             android:id="@+id/addRefuelingButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_refueling"
-            app:layout_constraintTop_toBottomOf="@id/refuelingList"
+            android:text="@string/new_refueling"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@id/refuelingList"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

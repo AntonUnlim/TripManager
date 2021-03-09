@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 class RefuelingInfoViewModel internal constructor(
     private val refuelingRepository: RefuelingRepository
 ) : ViewModel() {
+
     lateinit var refueling: LiveData<Refueling>
     var refuelingToDelete: Refueling? = null
     var refuelingId: Long = 0
@@ -32,11 +33,11 @@ class RefuelingInfoViewModel internal constructor(
         viewModelScope.launch {
 
             val refueling = Refueling(
+                    parentTripID.get()?:0,
                     odometer.get().toString(),
                     litersFilled.get().toString(),
                     pricePerLiter.get().toString(),
-                    getBooleanIsToFull(),
-                    parentTripID.get()?:0
+                    getBooleanIsToFull()
             )
 
             refueling.refuelingId = refuelingId

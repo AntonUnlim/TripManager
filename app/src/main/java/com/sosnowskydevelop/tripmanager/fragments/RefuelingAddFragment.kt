@@ -1,7 +1,6 @@
-package com.sosnowskydevelop.tripmanager
+package com.sosnowskydevelop.tripmanager.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.sosnowskydevelop.tripmanager.R
 import com.sosnowskydevelop.tripmanager.data.Refueling
 import com.sosnowskydevelop.tripmanager.databinding.FragmentRefuelingAddBinding
 import com.sosnowskydevelop.tripmanager.utilities.*
@@ -16,10 +16,10 @@ import com.sosnowskydevelop.tripmanager.viewmodels.RefuelingAddViewModel
 
 class RefuelingAddFragment : Fragment() {
 
-    private lateinit var binding: FragmentRefuelingAddBinding
+    private lateinit var fragmentRefuelingAddBinding: FragmentRefuelingAddBinding
 
-    private val viewModel: RefuelingAddViewModel by viewModels {
-        InjectorUtils.provideRefuelingAddViewModelFactory(requireContext())
+    private val refuelingAddViewModel: RefuelingAddViewModel by viewModels {
+        InjectorUtils.provideRefuelingAddViewModelFactory(context = requireContext())
     }
 
     private var lastRefueling: Refueling? = null
@@ -28,31 +28,31 @@ class RefuelingAddFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setFragmentResultListener(REQUEST_KEY_LAST_REFUELING) { _, bundle ->
+        setFragmentResultListener(requestKey = REQUEST_KEY_LAST_REFUELING) { _, bundle ->
             lastRefueling = bundle.get(BUNDLE_KEY_LAST_REFUELING) as Refueling?
-            viewModel.initLastRefueling(lastRefueling)
+            refuelingAddViewModel.initLastRefueling(lastRefueling = lastRefueling)
         }
 
-        setFragmentResultListener(REQUEST_KEY_TRIP_ID_FOR_REFUELING_ADD) { _, bundle ->
-            parentTripID = bundle.getLong(BUNDLE_KEY_TRIP_ID_FOR_REFUELING_ADD)
-            viewModel.initParentTrip(parentTripID)
+        setFragmentResultListener(requestKey = REQUEST_KEY_REFUELING_ADD_TRIP_ID) { _, bundle ->
+            parentTripID = bundle.getLong(BUNDLE_KEY_REFUELING_ADD_TRIP_ID)
+            refuelingAddViewModel.initParentTrip(parentTripID)
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        binding = FragmentRefuelingAddBinding.inflate(inflater, container, false)
+        fragmentRefuelingAddBinding = FragmentRefuelingAddBinding.inflate(inflater, container, false)
 
-        binding.viewModel = viewModel
+        fragmentRefuelingAddBinding.viewModel = refuelingAddViewModel
 
-        binding.saveButton.setOnClickListener {
-            viewModel.createRefueling()
-            if (viewModel.isRefuelingCreated) {
+        fragmentRefuelingAddBinding.saveButton.setOnClickListener {
+            refuelingAddViewModel.createRefueling()
+            if (refuelingAddViewModel.isRefuelingCreated) {
                 findNavController()
                         .navigate(R.id.action_refuelingAddFragment_to_refuelingListFragment)
             }
         }
 
-        return binding.root
+        return fragmentRefuelingAddBinding.root
     }
 }

@@ -4,14 +4,16 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sosnowskydevelop.tripmanager.data.trip.Trip
-import com.sosnowskydevelop.tripmanager.data.trip.TripRepository
+import com.sosnowskydevelop.tripmanager.data.Trip
+import com.sosnowskydevelop.tripmanager.data.TripRepository
+import com.sosnowskydevelop.tripmanager.utilities.FIELD_EMPTY_ERROR
 import kotlinx.coroutines.launch
 import java.util.*
 
 class TripAddViewModel internal constructor(
     private val tripRepository: TripRepository
 ) : ViewModel() {
+
     var isTripCreated: Boolean = false
 
     val name: ObservableField<String> = ObservableField()
@@ -23,15 +25,13 @@ class TripAddViewModel internal constructor(
 
         if (isNameEmpty(newTripName)) {
             isNameError.set(true)
-            nameErrorText.set("Name can't be empty!")
+            nameErrorText.set(FIELD_EMPTY_ERROR)
         } else {
             viewModelScope.launch {
-                tripRepository.createTrip(
-                    Trip(
+                tripRepository.createTrip(trip = Trip(
                         name = newTripName,
                         beginDate = Calendar.getInstance().time
-                    )
-                )
+                ))
             }
             isTripCreated = true
         }

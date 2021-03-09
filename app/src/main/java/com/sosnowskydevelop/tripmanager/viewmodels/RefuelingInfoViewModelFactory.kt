@@ -5,11 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.sosnowskydevelop.tripmanager.data.RefuelingRepository
 
 class RefuelingInfoViewModelFactory(
-    private val repository: RefuelingRepository
+    private val refuelingRepository: RefuelingRepository
 ) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return RefuelingInfoViewModel(repository) as T
+        return RefuelingInfoViewModel(refuelingRepository = refuelingRepository) as T
     }
 }

@@ -20,19 +20,16 @@ class RefuelingAdapter(
     private val fragment: Fragment
 ) : ListAdapter<Refueling, RecyclerView.ViewHolder>(RefuelingDiffCallback()) {
 
-    private lateinit var refuelingList: List<Refueling>
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RefuelingViewHolder {
-        return RefuelingViewHolder(ListItemRefuelingBinding
+        return RefuelingViewHolder(binding = ListItemRefuelingBinding
                 .inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as RefuelingViewHolder).bind(getItem(position))
+        (holder as RefuelingViewHolder).bind(refueling = getItem(position))
     }
 
     fun updateRefuelingList(refuelingList: List<Refueling>) {
-        this.refuelingList = refuelingList
         submitList(refuelingList)
         notifyDataSetChanged()
     }
@@ -41,17 +38,13 @@ class RefuelingAdapter(
         private val binding: ListItemRefuelingBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Refueling) {
-
-            binding.viewModel = RefuelingListItemViewModel(item)
-
+        fun bind(refueling: Refueling) {
+            binding.viewModel = RefuelingListItemViewModel(refueling = refueling)
             binding.executePendingBindings()
-
             binding.container.setOnClickListener {
-
-                fragment.setFragmentResult(REQUEST_KEY_REFUELING,
-                        bundleOf(BUNDLE_KEY_REFUELING to item.refuelingId))
-
+                /* TODO Put in Bundle refueling, not refuelingId. */
+                fragment.setFragmentResult(requestKey = REQUEST_KEY_REFUELING,
+                        result = bundleOf(BUNDLE_KEY_REFUELING to refueling.refuelingId))
                 fragment.findNavController()
                         .navigate(R.id.action_refuelingListFragment_to_refuelingInfoFragment)
             }

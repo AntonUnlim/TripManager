@@ -1,4 +1,4 @@
-package com.sosnowskydevelop.tripmanager.data.trip
+package com.sosnowskydevelop.tripmanager.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
@@ -6,10 +6,10 @@ import androidx.room.*
 @Dao
 interface TripDao {
     @Query("SELECT * FROM trip")
-    fun getAllTrips(): LiveData<List<Trip>>
+    fun findAllTrips(): LiveData<List<Trip>>
 
     @Query("SELECT * FROM trip WHERE tripId = :tripId")
-    fun getTrip(tripId: Long): LiveData<Trip>
+    fun findTripById(tripId: Long): LiveData<Trip>
 
     @Insert
     suspend fun insertTrip(trip: Trip)

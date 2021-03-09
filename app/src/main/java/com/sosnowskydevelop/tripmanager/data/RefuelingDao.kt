@@ -6,10 +6,10 @@ import androidx.room.*
 @Dao
 interface RefuelingDao {
     @Query("SELECT * FROM refueling WHERE tripId = :tripId")
-    fun getRefuelingList(tripId: Long): LiveData<List<Refueling>>
+    fun findRefuelingListByTripId(tripId: Long): LiveData<List<Refueling>>
 
     @Query("SELECT * FROM refueling WHERE refuelingId = :refuelingId")
-    fun getRefueling(refuelingId: Long): LiveData<Refueling>
+    fun findRefuelingById(refuelingId: Long): LiveData<Refueling>
 
     @Insert
     suspend fun insertRefueling(refueling: Refueling)
@@ -18,5 +18,5 @@ interface RefuelingDao {
     suspend fun updateRefueling(refueling: Refueling)
 
     @Delete
-    suspend fun deleteRefueling(refueling: Refueling?)
+    suspend fun deleteRefueling(refueling: Refueling)
 }

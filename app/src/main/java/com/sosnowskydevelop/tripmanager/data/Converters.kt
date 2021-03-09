@@ -1,4 +1,4 @@
-package com.sosnowskydevelop.tripmanager.utilities
+package com.sosnowskydevelop.tripmanager.data
 
 import androidx.room.TypeConverter
 import java.util.*

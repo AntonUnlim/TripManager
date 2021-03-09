@@ -12,13 +12,13 @@ import com.sosnowskydevelop.tripmanager.utilities.NOT_TO_FULL_LOWER
 import com.sosnowskydevelop.tripmanager.utilities.TO_FULL_CAPITALIZE
 import com.sosnowskydevelop.tripmanager.utilities.TO_FULL_LOWER
 
-@Entity(tableName = "refueling")
-data class Refueling (
+@Entity(tableName = "Refueling")
+data class Refueling(
+    val tripId: Long,
     val odometer: String,
     val litersFilled: String,
     val pricePerLiter: String,
-    val isToFull: Boolean,
-    val tripId: Long
+    val isToFull: Boolean
 ) : Parcelable {
     @PrimaryKey(autoGenerate = true)
     var refuelingId: Long = 0
@@ -43,16 +43,16 @@ data class Refueling (
             }
         }
 
+    // For Parcelable instantiation
     constructor(parcel: Parcel) : this(
-        odometer = parcel.readString().toString(),
-        litersFilled = parcel.readString().toString(),
-        pricePerLiter = parcel.readString().toString(),
-        isToFull = parcel.readByte() != 0.toByte(),
-        tripId = parcel.readLong()
+            tripId = parcel.readLong(),
+            odometer = parcel.readString().toString(),
+            litersFilled = parcel.readString().toString(),
+            pricePerLiter = parcel.readString().toString(),
+            isToFull = parcel.readByte() != 0.toByte()
     ) {
         refuelingId = parcel.readLong()
     }
-
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun writeToParcel(parcel: Parcel, flags: Int) {

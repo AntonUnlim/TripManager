@@ -1,4 +1,4 @@
-package com.sosnowskydevelop.tripmanager
+package com.sosnowskydevelop.tripmanager.fragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.sosnowskydevelop.tripmanager.R
 import com.sosnowskydevelop.tripmanager.databinding.FragmentRefuelingInfoBinding
 import com.sosnowskydevelop.tripmanager.utilities.*
 import com.sosnowskydevelop.tripmanager.viewmodels.RefuelingInfoViewModel

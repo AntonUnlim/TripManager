@@ -2,7 +2,6 @@ package com.sosnowskydevelop.tripmanager.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.sosnowskydevelop.tripmanager.data.Refueling
-import com.sosnowskydevelop.tripmanager.data.RefuelingRepository
 
 class RefuelingListItemViewModel internal constructor(
     val refueling: Refueling

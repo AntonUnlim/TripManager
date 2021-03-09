@@ -1,14 +1,12 @@
 package com.sosnowskydevelop.tripmanager.viewmodels
 
-import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sosnowskydevelop.tripmanager.data.Refueling
 import com.sosnowskydevelop.tripmanager.data.RefuelingRepository
-import com.sosnowskydevelop.tripmanager.utilities.EMPTY_FIELD_ERROR
-import com.sosnowskydevelop.tripmanager.utilities.LOG_TAG
+import com.sosnowskydevelop.tripmanager.utilities.FIELD_EMPTY_ERROR
 import com.sosnowskydevelop.tripmanager.utilities.ODOMETER_LESS_THAN_LAST_ERROR
 import kotlinx.coroutines.launch
 
@@ -36,7 +34,6 @@ class RefuelingAddViewModel internal constructor(
     fun initLastRefueling(lastRefueling: Refueling?) {
         this.lastRefueling = lastRefueling
         odometer.set(lastRefueling?.odometer ?: "0")
-
     }
 
     fun initParentTrip(parentTripID: Long) {
@@ -44,7 +41,6 @@ class RefuelingAddViewModel internal constructor(
     }
 
     fun createRefueling() {
-
         val newRefuelingOdometer = odometer.get().toString()
         val newRefuelingLitersFilled = litersFilled.get().toString()
         val newRefuelingPricePerLiter = pricePerLiter.get().toString()
@@ -53,7 +49,7 @@ class RefuelingAddViewModel internal constructor(
         when {
             isNewRefuelingOdometerEmpty(newRefuelingOdometer) -> {
                 isOdometerError.set(true)
-                odometerErrorText.set(EMPTY_FIELD_ERROR)
+                odometerErrorText.set(FIELD_EMPTY_ERROR)
             }
             isNewRefuelingOdometerLessThanLast(newRefuelingOdometer) -> {
                 isOdometerError.set(true)
@@ -61,16 +57,16 @@ class RefuelingAddViewModel internal constructor(
             }
             isNewRefuelingLitersFilledEmpty(newRefuelingLitersFilled) -> {
                 isLitersFilledError.set(true)
-                litersFilledErrorText.set(EMPTY_FIELD_ERROR)
+                litersFilledErrorText.set(FIELD_EMPTY_ERROR)
             }
             else -> {
                 viewModelScope.launch {
-                    refuelingRepository.createRefueling(Refueling(
-                            newRefuelingOdometer,
-                            newRefuelingLitersFilled,
-                            newRefuelingPricePerLiter,
-                            newRefuelingIsToFull,
-                            parentTripID
+                    refuelingRepository.createRefueling(refueling = Refueling(
+                            tripId = parentTripID,
+                            odometer = newRefuelingOdometer,
+                            litersFilled = newRefuelingLitersFilled,
+                            pricePerLiter = newRefuelingPricePerLiter,
+                            isToFull = newRefuelingIsToFull
                     ))
                 }
                 isRefuelingCreated = true

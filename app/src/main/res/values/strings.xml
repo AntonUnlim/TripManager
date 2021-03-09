@@ -2,7 +2,8 @@
     <string name="app_name">TripManager</string>
 
 <!--Buttons-->
-    <string name="add_refueling">Добавить заправку</string>
+    <string name="new_trip">Новая поездка</string>
+    <string name="new_refueling">Новая заправка</string>
     <string name="save">Сохранить</string>
     <string name="delete">Удалить</string>
 
@@ -17,9 +18,5 @@
     <string name="to_full_lower">до полного</string>
     <string name="not_to_full_capitalize">Не до полного</string>
     <string name="not_to_full_lower">не до полного</string>
-
     <string name="averageFuelConsumption">Средний расход топлива</string>
-    <string name="emptyFieldError">Поле не может быть пустым!</string>
-    <string name="add_trip">Add new trip</string>
-
 </resources>

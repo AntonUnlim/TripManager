@@ -10,8 +10,8 @@ class RefuelingListViewModel internal constructor(
     private val refuelingRepository: RefuelingRepository
 ) : ViewModel() {
 
-//    lateinit var refuelingList: LiveData<List<Refueling>>
-    var refuelingList: LiveData<List<Refueling>> = refuelingRepository.getRefuelingList(0)
+    lateinit var refuelingList: LiveData<List<Refueling>>
+//    var refuelingList: LiveData<List<Refueling>> = refuelingRepository.getRefuelingList(2)
 
     fun initTrip(tripId: Long) {
         refuelingList = refuelingRepository.getRefuelingList(tripId)

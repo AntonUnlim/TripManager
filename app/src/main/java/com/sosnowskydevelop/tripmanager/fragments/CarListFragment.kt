@@ -1,4 +1,4 @@
-package com.sosnowskydevelop.tripmanager
+package com.sosnowskydevelop.tripmanager.fragments
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sosnowskydevelop.tripmanager.R
 import com.sosnowskydevelop.tripmanager.adapters.CarAdapter
 import com.sosnowskydevelop.tripmanager.databinding.FragmentCarListBinding
 import com.sosnowskydevelop.tripmanager.viewmodels.CarListViewModel
