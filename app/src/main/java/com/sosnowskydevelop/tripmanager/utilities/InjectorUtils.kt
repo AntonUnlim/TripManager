@@ -13,7 +13,7 @@ object InjectorUtils {
                 .getInstance(context = context.applicationContext).tripDao())
     }
 
-    private fun getRefuelingRepository(context: Context): RefuelingRepository {
+    /* private */ fun getRefuelingRepository(context: Context): RefuelingRepository {
         return RefuelingRepository.getInstance(refuelingDao = AppDatabase
                 .getInstance(context = context.applicationContext).refuelingDao())
     }
