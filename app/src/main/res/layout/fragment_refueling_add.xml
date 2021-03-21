@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.sosnowskydevelop.tripmanager.SharedViewModel"/>
+            type="com.sosnowskydevelop.tripmanager.viewmodels.RefuelingAddViewModel"/>
     </data>
 
     <LinearLayout

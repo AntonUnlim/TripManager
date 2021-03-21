@@ -8,7 +8,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.sosnowskydevelop.tripmanager.SharedViewModel"/>
+            type="com.sosnowskydevelop.tripmanager.viewmodels.RefuelingListViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

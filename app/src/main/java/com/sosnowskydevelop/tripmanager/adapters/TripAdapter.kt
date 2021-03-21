@@ -29,11 +29,6 @@ class TripAdapter(
         (holder as TripViewHolder).bind(trip = getItem(position))
     }
 
-    fun updateTripList(tripList: List<Trip>) {
-        submitList(tripList)
-        notifyDataSetChanged()
-    }
-
     inner class TripViewHolder(
         private val binding: ListItemTripBinding
     ) : RecyclerView.ViewHolder(binding.root) {

@@ -29,11 +29,6 @@ class RefuelingAdapter(
         (holder as RefuelingViewHolder).bind(refueling = getItem(position))
     }
 
-    fun updateRefuelingList(refuelingList: List<Refueling>) {
-        submitList(refuelingList)
-        notifyDataSetChanged()
-    }
-
     inner class RefuelingViewHolder(
         private val binding: ListItemRefuelingBinding
     ) : RecyclerView.ViewHolder(binding.root) {

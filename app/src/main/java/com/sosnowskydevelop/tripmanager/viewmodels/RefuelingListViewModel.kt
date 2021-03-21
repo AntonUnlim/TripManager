@@ -1,19 +1,24 @@
 package com.sosnowskydevelop.tripmanager.viewmodels
 
+import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sosnowskydevelop.tripmanager.data.Refueling
 import com.sosnowskydevelop.tripmanager.data.RefuelingRepository
+import com.sosnowskydevelop.tripmanager.utilities.LOG_TAG
 
 class RefuelingListViewModel internal constructor(
     private val refuelingRepository: RefuelingRepository
 ) : ViewModel() {
 
-    lateinit var refuelingList: LiveData<List<Refueling>>
+//    lateinit var refuelingList: LiveData<List<Refueling>>
+    var refuelingList: LiveData<List<Refueling>> = refuelingRepository.getRefuelingList(0)
 
     fun initTrip(tripId: Long) {
         refuelingList = refuelingRepository.getRefuelingList(tripId)
+        Log.i(LOG_TAG, "initTripId $tripId")
     }
 
     val averageFuelConsumption: ObservableField<String> = ObservableField()

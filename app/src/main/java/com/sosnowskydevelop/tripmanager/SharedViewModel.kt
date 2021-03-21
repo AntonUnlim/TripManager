@@ -12,10 +12,12 @@ import com.sosnowskydevelop.tripmanager.utilities.ODOMETER_LESS_THAN_LAST_ERROR
 import kotlinx.coroutines.launch
 
 class SharedViewModel(
-//        private val refuelingRepository: RefuelingRepository
+        private val refuelingRepository: RefuelingRepository//,
+//        tripId: Long
 ) : ViewModel() {
 
-    lateinit var refuelingRepository: RefuelingRepository
+//    val refuelingList: LiveData<List<Refueling>> =
+//            refuelingRepository.getRefuelingList(tripId = tripId)
 
     /* From RefuelingAddViewModel */
     var isRefuelingCreated: Boolean = false
@@ -92,10 +94,11 @@ class SharedViewModel(
     }
 
     /* From RefuelingListViewModel */
-    lateinit var refuelingList: LiveData<List<Refueling>>
+//    lateinit var refuelingList: LiveData<List<Refueling>>
+    var refuelingList: LiveData<List<Refueling>> = refuelingRepository.getRefuelingList(tripId = 1)
 
     fun initTrip(tripId: Long) {
-        refuelingList = refuelingRepository.getRefuelingList(tripId)
+//        refuelingList = refuelingRepository.getRefuelingList(tripId = tripId)
     }
 
     val averageFuelConsumption: ObservableField<String> = ObservableField()

@@ -1,6 +1,7 @@
 package com.sosnowskydevelop.tripmanager.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
 class RefuelingRepository private constructor(
     private val refuelingDao: RefuelingDao
