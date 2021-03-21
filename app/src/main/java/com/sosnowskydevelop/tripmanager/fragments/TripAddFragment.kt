@@ -32,8 +32,8 @@ class TripAddFragment : Fragment() {
         fragmentTripAddBinding.tripSaveButton.setOnClickListener {
             tripAddViewModel.createTrip()
             if (tripAddViewModel.isTripCreated) {
-                findNavController()
-                    .navigate(R.id.action_tripAddFragment_to_tripListFragment)
+
+            findNavController().navigate(R.id.action_tripAddFragment_to_tripListFragment)
             }
         }
 

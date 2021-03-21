@@ -28,9 +28,9 @@ object InjectorUtils {
                 tripRepository = getTripRepository(context = context))
     }
 
-    fun provideRefuelingListViewModelFactory(context: Context): RefuelingListViewModelFactory {
+    fun provideRefuelingListViewModelFactory(context: Context, tripId: Long): RefuelingListViewModelFactory {
         return RefuelingListViewModelFactory(
-                refuelingRepository = getRefuelingRepository(context = context))
+                refuelingRepository = getRefuelingRepository(context = context), tripId)
     }
 
     fun provideRefuelingAddViewModelFactory(context: Context): RefuelingAddViewModelFactory {

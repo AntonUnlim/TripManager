@@ -22,15 +22,15 @@ class RefuelingListFragment : Fragment() {
 
     private lateinit var fragmentRefuelingListBinding: FragmentRefuelingListBinding
 
-    private val refuelingListViewModel: RefuelingListViewModel by viewModels {
-        InjectorUtils.provideRefuelingListViewModelFactory(context = requireContext())
-    }
+//    private val refuelingListViewModel: RefuelingListViewModel by viewModels {
+//        InjectorUtils.provideRefuelingListViewModelFactory(context = requireContext(), tripId)
+//    }
 
 //    private lateinit var sharedViewModel: SharedViewModel
 
     private lateinit var refuelingAdapter: RefuelingAdapter
 
-    private var tripId: Long = 0
+    //private var tripId: Long = 1
     private var lastRefueling: Refueling? = null
 
     override fun onCreateView(
@@ -45,18 +45,23 @@ class RefuelingListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val refuelingRepository =
+        setFragmentResultListener(REQUEST_KEY_REFUELING_LIST_TRIP_ID) { _, bundle ->
+            val tripId = bundle.getLong(BUNDLE_KEY_REFUELING_LIST_TRIP_ID)
+            val refuelingListViewModel: RefuelingListViewModel by viewModels {
+                InjectorUtils.provideRefuelingListViewModelFactory(context = requireContext(), tripId)
+            }
+            //        val refuelingRepository =
 //                InjectorUtils.getRefuelingRepository(context = requireContext())
 //        val sharedViewModelFactory = SharedViewModelFactory(
 //                refuelingRepository = refuelingRepository/*, tripId = tripId*/)
 //        sharedViewModel = ViewModelProvider(this/*requireActivity()*/, sharedViewModelFactory)
 //                .get(SharedViewModel::class.java)
 
-        fragmentRefuelingListBinding.viewModel = refuelingListViewModel
+            fragmentRefuelingListBinding.viewModel = refuelingListViewModel
 
-        refuelingAdapter = RefuelingAdapter(fragment = this)
-        fragmentRefuelingListBinding.refuelingList.adapter = refuelingAdapter
-        addObserverForRefuelingList(refuelingAdapter)
+            refuelingAdapter = RefuelingAdapter(fragment = this)
+            fragmentRefuelingListBinding.refuelingList.adapter = refuelingAdapter
+            addObserverForRefuelingList(refuelingAdapter, refuelingListViewModel)
 
 //        setFragmentResultListener(REQUEST_KEY_REFUELING_LIST_TRIP_ID) { _, bundle ->
 //            parentTripID = bundle.getLong(BUNDLE_KEY_REFUELING_LIST_TRIP_ID)
@@ -64,33 +69,30 @@ class RefuelingListFragment : Fragment() {
 //            addObserverForRefuelingList(refuelingAdapter)
 //        }
 
-        fragmentRefuelingListBinding.addRefuelingButton.setOnClickListener {
+            fragmentRefuelingListBinding.addRefuelingButton.setOnClickListener {
 
-            setFragmentResult(REQUEST_KEY_LAST_REFUELING,
-                    bundleOf(BUNDLE_KEY_LAST_REFUELING to lastRefueling))
+                setFragmentResult(REQUEST_KEY_LAST_REFUELING,
+                        bundleOf(BUNDLE_KEY_LAST_REFUELING to lastRefueling))
 
-            setFragmentResult(REQUEST_KEY_REFUELING_ADD_TRIP_ID,
-                    bundleOf(BUNDLE_KEY_REFUELING_ADD_TRIP_ID to tripId))
+                setFragmentResult(REQUEST_KEY_REFUELING_ADD_TRIP_ID,
+                        bundleOf(BUNDLE_KEY_REFUELING_ADD_TRIP_ID to tripId))
 
-            findNavController()
-                    .navigate(R.id.action_refuelingListFragment_to_refuelingAddFragment)
-        }
+                findNavController()
+                        .navigate(R.id.action_refuelingListFragment_to_refuelingAddFragment)
+            }
 
-        setHasOptionsMenu(true)
-
-        setFragmentResultListener(REQUEST_KEY_REFUELING_LIST_TRIP_ID) { _, bundle ->
-            tripId = bundle.getLong(BUNDLE_KEY_REFUELING_LIST_TRIP_ID)
-            refuelingListViewModel.initTrip(tripId = tripId)
-//            addObserverForRefuelingList(refuelingAdapter)
+            setHasOptionsMenu(true)
+            //refuelingListViewModel.initTrip(tripId = tripId)
+            addObserverForRefuelingList(refuelingAdapter, refuelingListViewModel)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        Log.i(LOG_TAG, refuelingAdapter.currentList.toString())
+        //Log.i(LOG_TAG, refuelingAdapter.currentList.toString())
     }
 
-    private fun addObserverForRefuelingList(refuelingAdapter: RefuelingAdapter) {
+    private fun addObserverForRefuelingList(refuelingAdapter: RefuelingAdapter, refuelingListViewModel: RefuelingListViewModel) {
         refuelingListViewModel.refuelingList.observe(viewLifecycleOwner, {
             it?.let {
                 refuelingAdapter.submitList(it)

@@ -10,20 +10,23 @@ import com.sosnowskydevelop.tripmanager.data.RefuelingRepository
 import com.sosnowskydevelop.tripmanager.utilities.LOG_TAG
 
 class RefuelingListViewModel internal constructor(
-    private val refuelingRepository: RefuelingRepository
+    private val refuelingRepository: RefuelingRepository,
+    private val tripId: Long,
+    val refuelingList: LiveData<List<Refueling>> = refuelingRepository.getRefuelingList(tripId)
 ) : ViewModel() {
 
 //    lateinit var refuelingList: LiveData<List<Refueling>>
-    var refuelingList: LiveData<List<Refueling>> = refuelingRepository.getRefuelingList(0)
+    //var refuelingList: LiveData<List<Refueling>> = refuelingRepository.getRefuelingList(1)
 
     fun initTrip(tripId: Long) {
-        refuelingList = refuelingRepository.getRefuelingList(tripId)
+        //refuelingList = refuelingRepository.getRefuelingList(tripId)
         Log.i(LOG_TAG, "initTripId $tripId")
     }
 
     val averageFuelConsumption: ObservableField<String> = ObservableField()
 
     fun updateAverageFuelConsumption(refuelingList: List<Refueling>) {
+
         when {
             refuelingList.isEmpty() -> {
                 averageFuelConsumption.set("Заправок нет")
